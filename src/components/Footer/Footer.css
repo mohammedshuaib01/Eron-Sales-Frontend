@@ -1,0 +1,162 @@
+/* Footer.css */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+.footer-container {
+    padding: 80px 20px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    background-color: var(--light);
+    color: var(--textDark);
+}
+
+.footer-content {
+    max-width: 900px;
+    width: 100%;
+}
+
+.footer-logo {
+    margin-bottom: 30px;
+}
+
+.footer-zoho-logo {
+    height: 100px;
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.footer-zoho-logo:hover {
+    transform: scale(1.05);
+}
+
+.footer-heading {
+    font-size: 55px;
+    font-weight: 700;
+    margin-bottom: 50px;
+    line-height: 1.3;
+    letter-spacing: -0.5px;
+}
+
+.highlight-text {
+    display: block;
+    margin-top: 15px;
+    color: var(--primary);
+}
+
+.footer-actions {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 80px;
+}
+
+.btn-footer-primary,
+.btn-footer-secondary {
+    border: none;
+    padding: 16px 36px; 
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 30px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-footer-primary {
+    background-color: var(--primary);
+    color: var(--textLight);
+}
+
+.btn-footer-secondary {
+    background-color: var(--gray);
+    color: var(--textLight);
+}
+
+.btn-footer-primary:hover,
+.btn-footer-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    filter: brightness(1.05);
+}
+
+.footer-bottom {
+    font-size: 13px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding-top: 40px;
+    color: var(--gray);
+}
+
+.disclaimer {
+    margin-bottom: 25px;
+    line-height: 1.6;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    font-weight: 500;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: var(--textDark);
+    transition: color 0.2s ease;
+    position: relative;
+}
+
+.footer-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--primary);
+    transition: width 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--primary);
+}
+
+.footer-links a:hover::after {
+    width: 100%;
+}
+
+.separator {
+    color: #ccc;
+}
+
+.copyright {
+    margin-top: 15px;
+    opacity: 0.8;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .footer-heading {
+        font-size: 32px;
+    }
+
+    .footer-actions {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .btn-footer-primary,
+    .btn-footer-secondary {
+        width: 100%;
+        max-width: 300px;
+    }
+}
