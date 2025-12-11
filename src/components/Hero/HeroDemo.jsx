@@ -1,7 +1,6 @@
 import React from 'react';
 import './HeroDemo.css';
-import Plasma from '../../elements/Plasma/Plasma';
-
+import LightRays from '../../elements/lightray/LightRay';
 const HeroDemo = () => {
     return (
         <div className="hero-demo-container">
@@ -10,16 +9,9 @@ const HeroDemo = () => {
 
             {/* Background Elements */}
             <div className="hero-demo-background">
-                {/* <Plasma
-                    color= "#808080"
-                    speed={0.3}
-                    direction="forward"
-                    scale={1.4}
-                    opacity={0.9}
-                    mouseInteractive={true}
-                /> */}
+                <LightRays />
                 <div className="glow-wave wave-1"></div>
-                
+
                 <div className="glow-wave wave-2"></div>
             </div>
 
@@ -35,13 +27,13 @@ const HeroDemo = () => {
 
                 <h1 className="hero-headline">
                     Why you need subscription,<br />
-                    when you can have your<span className="highlight-text">own CRM</span>
+                    when you can have your own <span className="highlight-text">CRM</span>
                 </h1>
 
-                <p className="hero-subtext">
+                {/* <p className="hero-subtext">
                     Modern software agency crafting efficient, design-driven digital<br />
                     solutions for brands that want innovation and impact.
-                </p>
+                </p> */}
 
                 <div className="hero-cta-group">
                     <button className="btn-primary">Start 7 Days Trial <span className="arrow">↗</span></button>

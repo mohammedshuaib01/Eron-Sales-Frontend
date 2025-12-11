@@ -1,0 +1,56 @@
+.light-rays-wrap {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.light-rays {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  filter: blur(8px);
+  pointer-events: none;
+}
+
+.light-rays li {
+  position: absolute;
+  width: var(--thickness);
+  height: calc(30% + 670px + var(--length));
+  
+
+  left: 50%;
+  transform-origin: center -100px;
+  mix-blend-mode: screen;
+
+  transform:
+    translateX(calc(-50% + var(--deg) * var(--spreadRange) * -1 + 0.5 * var(--spreadRange)))
+    translateY(-100px)
+    rotateZ(calc(var(--degRange) * -0.5 + var(--deg) * var(--degRange)))
+    rotateX(0.01deg);
+
+  animation:
+    shimmer linear var(--duration) calc(var(--delay) * -1) infinite alternate,
+    rotate ease-in-out calc(var(--duration) * 3.14) calc(var(--delay) * -1)
+      infinite alternate;
+}
+
+.light-rays li::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(166,255,248,1), rgba(166,255,248,0));
+  transform-origin: top center;
+  transform: rotateX(40deg);
+}
+
+@keyframes shimmer {
+  0% { opacity: 0.33; }
+  100% { opacity: 0.03; }
+}
+
+@keyframes rotate {
+  0% { rotate: 0deg; }
+  100% { rotate: var(--rotate); }
+}
