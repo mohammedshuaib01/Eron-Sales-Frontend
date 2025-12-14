@@ -5,14 +5,15 @@ import Hero from './components/Hero/Hero'
 import About from './components/About/About'
 import Footer from './components/Footer/Footer'
 import HeroDemo from './components/Hero/HeroDemo'
-
+import Scrollsection from './components/Scrollsection/Scrollsection'
 function App() {
   return (
     <div>
-      {/* <Header /> */}
+      <Header /> 
       <HeroDemo/> 
-      <Hero />
+      {/* <Hero /> */}
       <About />
+      <Scrollsection/>
       <Footer />
     </div>
   )

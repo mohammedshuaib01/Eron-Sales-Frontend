@@ -7,7 +7,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 60px;
-  background: rgba(0, 0, 0, 0.35);
+  /* background: rgba(0, 0, 0, 0.35); */
   backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.07);
 
@@ -16,28 +16,61 @@
   z-index: 100;
   font-family: 'Cabinet Grotesk', sans-serif;
   box-sizing: border-box;
+  transition: all 0.4s ease;
 }
 
-/* 
-.logo {
-  font-size: 22px;
-  font-weight: 600;
-  color: white;
+/* Scrolled State for Main Header Container */
+.main-header.scrolled {
+  background: transparent;
+  backdrop-filter: none;
+  border-bottom: none;
+  padding: 0;
   display: flex;
-  align-items: center;
-  gap: 8px;
-} */
+  pointer-events: none;
+  justify-content: center;
 
-.dot {
-  width: 12px;
-  height: 12px;
-  background: #ff6d00;
-  border-radius: 50%;
+  /* Let clicks pass through the invisible header parts */
+}
+
+
+
+
+
+
+.logo-image-header {
+  width: 140px;
+  position: relative;
+  z-index: 1;
+  transition: all 0.6s ease;
+}
+
+/* Hide Logo when scrolled - Move LEFT (away from center) */
+.main-header.scrolled .logo-image-header {
+  opacity: 0;
+  transform: translateX(180px);
+  pointer-events: none;
 }
 
 .nav-links {
   display: flex;
   gap: 35px;
+  position: relative;
+  z-index: 10;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Transform Nav Links into Pill when scrolled */
+.main-header.scrolled .nav-links {
+  background: rgba(83, 82, 82, 0.8);
+  backdrop-filter: blur(15px);
+  padding: 12px 40px;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 20px;
+  pointer-events: auto;
+  /* re-enable clicks on the nav */
+  gap: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .nav-links a {
@@ -48,26 +81,36 @@
   font-weight: 300;
 }
 
+.main-header.scrolled .nav-links a {
+  font-size: 18px;
+  /* Slightly smaller text in pill */
+}
+
 .nav-links a:hover {
   color: #ffffff;
   text-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
 }
 
 .join-btn {
-  padding: 10px 22px;
+  padding: 1rem 2rem;
   border-radius: 25px;
   border: none;
   background: white;
   color: black;
-  font-size: 14px;
+  font-size: 16px;
   cursor: pointer;
-  transition: 0.3s ease;
+  position: relative;
+  z-index: 1;
+  transition: all 0.6s ease;
+  font-weight: 500;
+}
+
+.main-header.scrolled .join-btn {
+  opacity: 0;
+  transform: translateX(-180px);
+  pointer-events: none;
 }
 
 .join-btn:hover {
   background: #f1f1f1;
-}
-
-.logo-image-header {
-  width: 80px;
 }

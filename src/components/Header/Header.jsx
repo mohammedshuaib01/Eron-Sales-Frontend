@@ -1,11 +1,23 @@
 import React from "react";
 import "./Header.css";
+import { useState, useEffect } from "react";
 
 const Header = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="main-header">
+    <header className={`main-header ${isScrolled ? "scrolled" : ""}`}>
       <div className="logo">
-        <img className="logo-image-header" src="public/crmlogo.png" alt="" />
+        <img className="logo-image-header" src="public/eronlogo.png" alt="" />
       </div>
 
       <nav className="nav-links">
@@ -16,7 +28,7 @@ const Header = () => {
         <a href="/community">Community</a>
       </nav>
 
-      <button className="join-btn">Join Beta</button>
+      <button className="join-btn">BOOK A DEMO</button>
     </header>
   );
 };
