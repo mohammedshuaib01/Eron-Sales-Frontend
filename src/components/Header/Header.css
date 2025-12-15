@@ -17,6 +17,12 @@
   font-family: 'Cabinet Grotesk', sans-serif;
   box-sizing: border-box;
   transition: all 0.4s ease;
+  will-change: transform;
+  /* Optimize for scroll hiding */
+}
+
+.main-header.hidden {
+  transform: translateY(-100%);
 }
 
 /* Scrolled State for Main Header Container */
@@ -42,6 +48,7 @@
   position: relative;
   z-index: 1;
   transition: all 0.6s ease;
+  will-change: transform, opacity;
 }
 
 /* Hide Logo when scrolled - Move LEFT (away from center) */
@@ -57,6 +64,7 @@
   position: relative;
   z-index: 10;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, background, padding;
 }
 
 /* Transform Nav Links into Pill when scrolled */

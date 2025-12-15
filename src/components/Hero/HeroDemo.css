@@ -40,6 +40,41 @@
     padding: 0 1rem;
 }
 
+/* Staggered Animation Initial States */
+.tag-container,
+.hero-headline,
+.hero-subtext,
+.hero-cta-group {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Animate In States with Delays */
+.hero-demo-container.animate-in .tag-container {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.1s;
+}
+
+.hero-demo-container.animate-in .hero-headline {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.3s;
+}
+
+.hero-demo-container.animate-in .hero-subtext {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.5s;
+}
+
+.hero-demo-container.animate-in .hero-cta-group {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.7s;
+}
+
 .tag-container {
     display: inline-block;
     background: rgba(255, 255, 255, 0.08);
@@ -102,7 +137,7 @@
     border-radius: 50px;
     font-size: 1.2rem;
     font-weight: 500;
-    letter-spacing: 0.09em; 
+    letter-spacing: 0.09em;
     cursor: pointer;
     transition: transform 0.35s cubic-bezier(.22, 1.61, .36, 1);
 
@@ -111,11 +146,11 @@
     gap: .5rem;
     font-family: 'Cabinet Grotesk', sans-serif;
 }
- 
+
 .btn-primary:hover {
     transform: translateY(-2px);
     transition: transform 0.35s cubic-bezier(.22, 1.61, .36, 1);
-    
+
     /* box-shadow: 0 10px 25px #522f0a; */
 }
 

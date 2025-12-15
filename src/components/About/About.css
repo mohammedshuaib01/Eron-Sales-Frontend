@@ -71,6 +71,40 @@
     margin: 0 auto;
 }
 
+/* Animation Initial States */
+.about-header,
+.stat-card {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
+    /* Optimize animation */
+}
+
+/* Header Entrance */
+.crm-section.animate-in .about-header {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Cards Staggered Entrance */
+.crm-section.animate-in .stat-card {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.crm-section.animate-in .stat-card:nth-child(1) {
+    transition-delay: 0.2s;
+}
+
+.crm-section.animate-in .stat-card:nth-child(2) {
+    transition-delay: 0.4s;
+}
+
+.crm-section.animate-in .stat-card:nth-child(3) {
+    transition-delay: 0.6s;
+}
+
 .stat-card {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.08);

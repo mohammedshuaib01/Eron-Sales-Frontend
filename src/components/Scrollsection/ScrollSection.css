@@ -1,45 +1,215 @@
-.scroll-steps-wrapper {
-  position: relative;
-  background: #111;
-  padding-top: 200px;
+.scroll-section {
+  background-color: #ffffff;
+  color: #1F1C19;
+  padding: 100px 0;
+  min-height: 100vh;
+  font-family: 'Cabinet Grotesk', sans-serif;
 }
 
-.fixed-box {
-  height: 100vh;
+.scroll-container {
+  display: flex;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+  position: relative;
+  gap: 40px;
+}
+
+/* Common Sticky Behavior */
+.sticky-column {
   position: sticky;
-  top: 0;
+  top: 100px;
+  /* Adjust based on navbar height */
+  height: calc(100vh - 200px);
+  /* Viewport height minus padding */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Left Column */
+.left-text {
+  flex: 1;
+  z-index: 10;
+}
+
+.text-wrapper {
+  margin-bottom: 2rem;
+
+  /* Animation Initial State */
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.scroll-section.animate-in .text-wrapper {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered Start for Image Cards Entrance (different from active state) */
+.scroll-section .image-card {
+  /* Keep existing transition */
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  /* But add initial stagger offset if needed for entrance, 
+       though they are sticky, so mainly we animate the text-wrapper first */
+}
+
+.text-wrapper .section-label {
+  display: block;
+  font-size: 14px;
+  /* ... */
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--gray, #808080);
+  margin-bottom: 20px;
+}
+
+.text-wrapper h1 {
+  font-size: 48px;
+  line-height: 1.1;
+  font-weight: 600;
+  margin: 0;
+  color: #1F1C19;
+}
+
+.text-wrapper .highlight {
+  color: var(--primary, #FE911E);
+}
+
+.text-wrapper .highlight-alt {
+  color: var(--accent, #EAC23F);
+}
+
+/* Center Image Column */
+.center-image {
+  flex: 1.5;
+  z-index: 5;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.fade-container {
-  text-align: center;
-  width: 600px;
+.image-stack {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1/1;
+  /* Square or whatever the image roughly is */
+  max-width: 500px;
+}
+
+.image-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  opacity: 0;
+  transform: scale(0.95) translateY(20px);
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Box shadow removed for image transparency, or kept if image is a card */
+  /* box-shadow: 0 20px 50px rgba(0,0,0,0.5); */
+  /* For placeholder text/icon */
   color: white;
+  text-align: center;
 }
 
-.fade-text {
-  font-size: 42px;
+.image-card.active {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+.card-content {
+  padding: 20px;
+}
+
+
+
+.card-image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  /* Glow removed as requested */
+  /* filter: drop-shadow(0 0 40px rgba(254, 145, 30, 0.2)); */
+}
+
+/* Right Content Column */
+.scrolling-column {
+  flex: 1;
+  padding-top: 20vh;
+  /* Start scrolling a bit lower */
+  padding-bottom: 20vh;
+}
+
+.content-block {
+  min-height: 80vh;
+  /* Ensure enough scroll space between items */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 1;
+  /* Always visible */
+  transition: opacity 0.5s ease;
+  padding: 20px;
+}
+
+.content-block[data-step] {
+  /* Styles for when it is active can be handled via observer if needed, 
+       but currently only using it to trigger the center image */
+}
+
+/* Optional: Highlight text when active (using general sibling selector or js class) */
+.active-text {
+  color: var(--primary, #FE911E);
+}
+
+.active-text {
+  color: var(--primary, #FE911E);
+}
+
+/* .content-block:hover {
+  opacity: 1;
+} */
+
+.content-block h2 {
+  font-size: 32px;
+  margin-bottom: 16px;
   font-weight: 600;
-  animation: fade 0.5s ease;
+  color: #1F1C19;
 }
 
-.fade-subtext {
+.content-block p {
   font-size: 18px;
-  opacity: 0.8;
-  margin-bottom: 20px;
-  animation: fade 0.5s ease;
+  line-height: 1.6;
+  color: #444;
+  margin-bottom: 24px;
 }
 
-.fade-image {
-  width: 460px;
-  border-radius: 12px;
-  animation: fade 0.6s ease;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-}
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .scroll-container {
+    flex-direction: column;
+    padding-top: 50px;
+  }
 
-@keyframes fade {
-  from { opacity: 0; transform: scale(0.96); }
-  to { opacity: 1; transform: scale(1); }
+  .sticky-column {
+    position: relative;
+    top: 0;
+    height: auto;
+    margin-bottom: 40px;
+  }
+
+  .image-stack {
+    aspect-ratio: 16/9;
+    max-width: 100%;
+  }
+
+  .content-block {
+    min-height: 50vh;
+  }
 }

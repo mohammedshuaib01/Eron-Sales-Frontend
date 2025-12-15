@@ -1,9 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './HeroDemo.css';
 import LightRays from '../../elements/lightray/LightRay';
+
 const HeroDemo = () => {
+    const [isVisible, setIsVisible] = useState(false);
+    const heroRef = useRef(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                    observer.disconnect();
+                }
+            },
+            { threshold: 0.1 } // Trigger earlier for Hero since it's at the top
+        );
+
+        if (heroRef.current) {
+            observer.observe(heroRef.current);
+        }
+
+        return () => observer.disconnect();
+    }, []);
+
     return (
-        <div className="hero-demo-container">
+        <div className={`hero-demo-container ${isVisible ? 'animate-in' : ''}`} ref={heroRef}>
 
 
 
@@ -32,7 +54,7 @@ const HeroDemo = () => {
 
                 <p className="hero-subtext">
                     If rising CRM subscription fees are costing you time, money, and team focus,
-it’s time for a smarter choice <br /> that grows with your business not your budget.
+                    it’s time for a smarter choice <br /> that grows with your business not your budget.
                 </p>
 
                 <div className="hero-cta-group">

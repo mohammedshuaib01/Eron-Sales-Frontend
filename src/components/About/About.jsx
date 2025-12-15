@@ -1,9 +1,30 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./About.css";
 
 const About = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="crm-section">
+    <section className={`crm-section ${isVisible ? 'animate-in' : ''}`} ref={sectionRef}>
       <div className="about-header">
         <div className="headline-box">
           <h2>Paying a Fortune on</h2>
@@ -47,13 +68,13 @@ const About = () => {
         </div>
 
         <div className="about-footer">
-        <p>
-          If your CRM keeps getting more expensive without giving you more value
-        </p>
-      </div>
+          <p>
+            If your CRM keeps getting more expensive without giving you more value
+          </p>
+        </div>
       </div>
 
-      
+
     </section>
   );
 };

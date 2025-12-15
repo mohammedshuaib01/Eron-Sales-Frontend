@@ -1,77 +1,130 @@
-import React, { useEffect, useState, useRef } from "react";
-import "./Scrollsection.css";
 
-const steps = [
-  {
-    title: "Lead Management",
-    desc: "Organize, capture, and track leads with ease.",
-    img: "/lead_mgmt.png"
-  },
-  {
-    title: "Smart Automation",
-    desc: "Automate repetitive work and save hours every week.",
-    img: "/automation.png"
-  },
-  {
-    title: "Pipeline Management",
-    desc: "Visualize deals and move them forward effortlessly.",
-    img: "/pipeline.png"
-  },
-  {
-    title: "Analytics Dashboard",
-    desc: "Monitor performance with real-time insights.",
-    img: "/analytics.png"
-  }
-];
+import React, { useState, useEffect, useRef } from 'react';
+import './ScrollSection.css';
+import dashboardMock from '../../assets/dashboard_mock.png';
 
-export default function Scrollsection() {
-  const [index, setIndex] = useState(0);
+const Scrollsection = () => {
+  const [activeStep, setActiveStep] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const contentRefs = useRef([]);
   const sectionRef = useRef(null);
 
   useEffect(() => {
-    const sec = sectionRef.current;
-    const totalHeight = window.innerHeight * steps.length;
-
-    const onScroll = () => {
-      const top = sec.getBoundingClientRect().top;
-
-      const progress = Math.min(
-        steps.length - 1,
-        Math.max(0, Math.floor(-top / window.innerHeight))
-      );
-
-      setIndex(progress);
+    // 1. Observer for Scrollspy (Active Step)
+    const observerOptions = {
+      root: null,
+      rootMargin: '-50% 0px -50% 0px', // Trigger when element is in the middle of viewport
+      threshold: 0
     };
 
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const step = Number(entry.target.dataset.step);
+          setActiveStep(step);
+        }
+      });
+    }, observerOptions);
+
+    contentRefs.current.forEach(ref => {
+      if (ref) observer.observe(ref);
+    });
+
+    // 2. Observer for Section Entrance
+    const entranceObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          entranceObserver.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      entranceObserver.observe(sectionRef.current);
+    }
+
+    return () => {
+      contentRefs.current.forEach(ref => {
+        if (ref) observer.unobserve(ref);
+      });
+      entranceObserver.disconnect();
+    };
   }, []);
 
+  const steps = [
+    {
+      id: 0,
+      title: "Comprehensive Dashboard",
+      description: "Get a bird's eye view of your entire sales pipeline. Track performance metrics, upcoming tasks, and deal status all in one place.",
+      img: 'data.png'
+    },
+    {
+      id: 1,
+      title: "Smart Lead Management",
+      description: "Automatically capture and organize leads from multiple sources. Score and qualify them to focus on the most promising opportunities.",
+      img: 'marketing.png'
+    },
+    {
+      id: 2,
+      title: "Automated Workflows",
+      description: "Eliminate repetitive tasks with powerful automation. Trigger emails, follow-ups, and field updates based on specific criteria.",
+      img: 'lead.png'
+    },
+    {
+      id: 3,
+      title: "Advanced Analytics",
+      description: "Make data-driven decisions with in-depth reporting. Visualize trends, forecast revenue, and optimize your sales strategy.",
+      img: 'intel.png'
+    }
+  ];
+
   return (
-    <div className="scroll-steps-wrapper" ref={sectionRef}>
+    <section className={`scroll-section ${isVisible ? 'animate-in' : ''}`} ref={sectionRef}>
+      <div className="scroll-container">
+        {/* Left: Sticky Title */}
+        <div className="sticky-column left-text">
+          <div className="text-wrapper">
+            <span className="section-label">FEATURES</span>
+            <h1>
+              Powerful <span className="highlight">Tools</span><br />
+              For Your <span className="highlight-alt">Growth</span>
+            </h1>
+          </div>
+        </div>
 
-      <div className="fixed-box">
-        <div className="fade-container">
-          <h1 key={steps[index].title} className="fade-text">
-            {steps[index].title}
-          </h1>
+        {/* Center: Sticky Images */}
+        <div className="sticky-column center-image">
+          <div className="image-stack">
+            {steps.map((step, index) => (
+              <div
+                key={step.id}
+                className={`image-card ${activeStep === index ? 'active' : ''}`}
+              >
+                <img src={step.img} alt={step.title} className="card-image" />
+              </div>
+            ))}
+          </div>
+        </div>
 
-          <p key={steps[index].desc} className="fade-subtext">
-            {steps[index].desc}
-          </p>
-
-          <img
-            key={steps[index].img}
-            src={steps[index].img}
-            className="fade-image"
-            alt=""
-          />
+        {/* Right: Scrolling Content */}
+        <div className="scrolling-column right-content">
+          {steps.map((step, index) => (
+            <div
+              key={step.id}
+              className="content-block"
+              ref={el => contentRefs.current[index] = el}
+              data-step={index}
+            >
+              <h2 className={activeStep === index ? 'active-text' : ''}>{step.title}</h2>
+              <p>{step.description}</p>
+            </div>
+          ))}
         </div>
       </div>
-
-      {/* Invisible scroll area */}
-      <div style={{ height: `${steps.length * 100}vh` }}></div>
-
-    </div>
+    </section>
   );
-}
+};
+
+export default Scrollsection;
