@@ -1,14 +1,18 @@
 /* Background */
 .crm-section {
     width: 100%;
-    min-height: 100vh;
-    padding: 100px 80px;
+    /* Removed min-height 100vh to allow it to shrink */
+    min-height: auto;
+    padding: 80px 40px;
+    /* Reduced from 100px 80px */
     display: flex;
     flex-direction: column;
     justify-content: center;
     color: #fff;
     background-color: #000000;
     font-family: 'Cabinet Grotesk', sans-serif;
+    scroll-snap-align: start;
+    /* Ensure it still snaps */
 }
 
 /* TOP HEADER SECTION */
@@ -18,8 +22,9 @@
     align-items: flex-start;
     width: 100%;
     max-width: 1400px;
-    margin: 0 auto 100px auto;
-    gap: 60px;
+    margin: 0 auto 50px auto;
+    /* Reduced from 100px */
+    gap: 40px;
 }
 
 .headline-box {
@@ -27,14 +32,16 @@
 }
 
 .headline-box h2 {
-    font-size: 64px;
+    font-size: 48px;
+    /* Reduced from 64px */
     font-weight: 600;
     line-height: 1.1;
     margin: 0;
 }
 
 .highlight-yellow {
-    font-size: 85px !important;
+    font-size: 64px !important;
+    /* Reduced from 85px */
     font-weight: 600 !important;
     color: #FFD02F;
     /* Yellow from image */
@@ -43,11 +50,12 @@
 .description-box {
     flex: 1;
     max-width: 600px;
-    padding-top: 10px;
+    padding-top: 5px;
 }
 
 .description-box p {
     font-size: 22px;
+    /* Kept same as requested */
     line-height: 1.6;
     color: rgba(255, 255, 255, 0.6);
     margin: 0;
@@ -65,7 +73,8 @@
 .cards-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    gap: 20px;
+    /* Reduced gap */
     width: 100%;
     max-width: 1400px;
     margin: 0 auto;
@@ -110,11 +119,13 @@
     border: 1px solid rgba(255, 255, 255, 0.08);
     /* Subtle border */
     border-radius: 20px;
-    padding: 40px;
+    padding: 30px;
+    /* Reduced padding */
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: 250px;
+    min-height: 200px;
+    /* Reduced height */
     position: relative;
     backdrop-filter: blur(20px);
 }
@@ -125,17 +136,19 @@
 }
 
 .stat-percentage {
-    font-size: 64px;
+    font-size: 56px;
+    /* Reduced from 64px */
     font-weight: 600;
     margin: 0 0 10px 0;
     letter-spacing: -0.02em;
 }
 
 .stat-label {
-    font-size: 18px;
+    font-size: 16px;
+    /* Slightly reduced */
     font-weight: 500;
     color: rgba(255, 255, 255, 0.584);
-    margin: 0 0 30px 0;
+    margin: 0 0 20px 0;
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
@@ -163,7 +176,8 @@
     .about-header {
         flex-direction: column;
         gap: 30px;
-        margin-bottom: 60px;
+        margin-bottom: 40px;
+        /* Reduced from 60px */
     }
 
     .cards-container {
@@ -172,10 +186,42 @@
     }
 
     .headline-box h2 {
-        font-size: 48px;
+        font-size: 42px;
+        /* Reduced from 48px */
     }
 
     .crm-section {
-        padding: 60px 20px;
+        padding: 50px 20px;
+        /* Reduced from 60px 20px */
     }
+
+     /* Initial hidden state (from bottom) */
+  .stat-card {
+    opacity: 0;
+    transform: translateY(70px);
+    transition:
+      opacity 0.65s ease,
+      transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
+  }
+
+  /* Animate in when section enters */
+  .crm-section.animate-in .stat-card {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Staggered entrance */
+  .crm-section.animate-in .stat-card:nth-child(1) {
+    transition-delay: 0.8s;
+  }
+
+  .crm-section.animate-in .stat-card:nth-child(2) {
+    transition-delay: 1s;
+  }
+
+  .crm-section.animate-in .stat-card:nth-child(3) {
+    transition-delay: 1.2s;
+  }
+
 }

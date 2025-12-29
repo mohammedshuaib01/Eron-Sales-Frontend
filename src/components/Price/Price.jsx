@@ -31,7 +31,7 @@ const Price = () => {
   // Using simple "users" count mapping to chart scale
   const [users, setUsers] = useState(1);
 
-  const leftValue = 10;
+
   const handleSliderChange = (e) => {
     setUsers(Number(e.target.value));
   };
@@ -39,6 +39,9 @@ const Price = () => {
   // Calculate percentage for slider background/tooltip alignment
   const maxUsers = 50; // slider max
   const percentage = ((users - 1) / (maxUsers - 1)) * 100;
+
+  // Yellow bar: 10% base + slight increase up to 20%
+  const leftValue = 10 + (percentage / 100) * 10;
 
   // Logic: Base 25% + Scaled growth to reach exactly 100% at maxUsers
   // Linear interpolation: Start at 25, Add up to 75 based on slider percentage
@@ -49,7 +52,7 @@ const Price = () => {
       <div className={`price-container-3d ${isVisible ? 'animate-in' : ''}`}>
 
         {/* LEFT: Calculator Section */}
-        <div className="calculator-wrapper">
+        <div className="calculator-wrapper anim-item" style={{ transitionDelay: '0ms' }}>
           {/* Slider Control Container */}
 
 
@@ -58,8 +61,8 @@ const Price = () => {
             {/* Left Chart (Yellow - Fixed) */}
             <div className="chart-item left-item">
               <div className="text-content">
-                <span className="big-percent" style={{ color: '#F7FE2C' }}>{leftValue}%</span>
-                <p style={{ color: '#F7FE2C' }}>of second-level referrals<br />deposits</p>
+                <span className="big-percent" style={{ color: '#F7FE2C' }}>${Math.round(leftValue)}</span>
+                <p style={{ color: '#F7FE2C' }}>ERON CRM</p>
               </div>
               <div className="bar-visual" style={{ height: `${leftValue * 3}px` }}>
                 <div className="dot-top yellow-dot"></div>
@@ -73,10 +76,10 @@ const Price = () => {
             {/* Right Chart (White - Dynamic) */}
             <div className="chart-item right-item">
               <div className="text-content">
-                <span className="big-percent">{Math.round(rightValue)}%</span>
-                <p>of direct referrals deposits</p>
+                <span className="big-percent">${Math.round(rightValue)}</span>
+                <p>ZOHO CRM</p>
               </div>
-              <div className="bar-visual" style={{ height: `${rightValue * 4}px` }}>
+              <div className="bar-visual" style={{ height: `${rightValue * 4}px` }}> {/* Height animated via CSS transition, separate from entrance */}
                 <div className="dot-top"></div>
                 <div className="dashed-line"></div>
                 <div className="top-plate"></div>
@@ -105,7 +108,7 @@ const Price = () => {
               onChange={handleSliderChange}
               className="custom-range"
               style={{
-                background: `linear-gradient(to right, #ffffff ${percentage}%, #4b5563 ${percentage}%)`
+                background: `linear-gradient(to right, #F7FE2C ${percentage}%, #ffffff ${percentage}%)`
               }}
             />
           </div>
@@ -115,11 +118,11 @@ const Price = () => {
 
         {/* RIGHT: Info/Title Section */}
         <div className="price-info-right">
-          <h2>
+          <h2 className="anim-item" style={{ transitionDelay: '0ms' }}>
             Real Savings, <br />
             <span className="highlight-yellow">Real Growth.</span>
           </h2>
-          <p style={{ maxWidth: '400px', fontSize: '18px', color: '#999', lineHeight: '1.6' }}>
+          <p className="anim-item" style={{ maxWidth: '400px', fontSize: '18px', color: '#999', lineHeight: '1.6', transitionDelay: '100ms' }}>
             See how your referral bonuses stack up against standard rates.
             Maximize your potential returns as you grow your network.
           </p>

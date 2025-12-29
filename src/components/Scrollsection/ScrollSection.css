@@ -75,7 +75,7 @@
 }
 
 .text-wrapper .highlight {
-  color: var(--primary, #FE911E);
+  color: var(--accent, #EAC23F);
 }
 
 .text-wrapper .highlight-alt {

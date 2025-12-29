@@ -5,7 +5,7 @@
 html {
     scroll-behavior: smooth;
     /* Mandatory ensures it always lands on a section, but removing 'stop: always' allows faster scrolling */
-    scroll-snap-type: y mandatory;
+    scroll-snap-type: y proximity;
     height: 100%;
 }
 
@@ -23,24 +23,9 @@ body {
 .scroll-section,
 .price-section-3d,
 footer {
-    scroll-snap-align: start;
+    scroll-snap-align:start;
     /* 'normal' allows the user to scroll past multiple sections with one flick */
     scroll-snap-stop: normal;
 }
 
 /* Initial Page Load Animation */
-#root {
-    animation: pageEntrance 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-}
-
-@keyframes pageEntrance {
-    0% {
-        opacity: 0;
-        transform: translateY(60px);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}

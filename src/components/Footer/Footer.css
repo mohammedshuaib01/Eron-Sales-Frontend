@@ -1,162 +1,338 @@
 /* Footer.css */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
-.footer-container {
-    padding: 80px 20px 40px;
+.footer-wrapper {
+    background-color: #000;
+    color: #fff;
+    padding-top: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
-    font-family: 'Roboto', sans-serif;
-    position: relative;
-    background-color: var(--light);
-    color: var(--textDark);
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
 }
 
-.footer-content {
-    max-width: 900px;
+/* --- CTA Gradient Card --- */
+.footer-cta-card {
     width: 100%;
+    max-width: 1000px;
+    background: linear-gradient(135deg, #F7FE2C 0%, var(--primary) 100%);
+    /* Yellow and Primary mix */
+    border-radius: 40px;
+    padding: 80px 40px;
+    text-align: center;
+    margin-bottom: 100px;
+    position: relative;
+    /* box-shadow: 0 20px 60px rgba(124, 58, 237, 0.3); Removed glow */
+    margin-top: 40px;
 }
 
-.footer-logo {
-    margin-bottom: 30px;
+.cta-content h2 {
+    font-family: 'Cabinet Grotesk', sans-serif;
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 40px;
+    color: #000;
+    /* Black text on bright yellow bg */
 }
 
-.footer-zoho-logo {
-    height: 100px;
-    width: auto;
+.cta-btn {
+    background: #000;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 16px 32px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cta-btn .arrow {
     transition: transform 0.3s ease;
 }
 
-.footer-zoho-logo:hover {
-    transform: scale(1.05);
-}
-
-.footer-heading {
-    font-size: 55px;
-    font-weight: 700;
-    margin-bottom: 50px;
-    line-height: 1.3;
-    letter-spacing: -0.5px;
-}
-
-.highlight-text {
-    display: block;
-    margin-top: 15px;
-    color: var(--primary);
-}
-
-.footer-actions {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    margin-bottom: 80px;
-}
-
-.btn-footer-primary,
-.btn-footer-secondary {
-    border: none;
-    padding: 16px 36px; 
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    border-radius: 30px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.btn-footer-primary {
-    background-color: var(--primary);
-    color: var(--textLight);
-}
-
-.btn-footer-secondary {
-    background-color: var(--gray);
-    color: var(--textLight);
-}
-
-.btn-footer-primary:hover,
-.btn-footer-secondary:hover {
+.cta-btn:hover {
+    background: #222;
     transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    filter: brightness(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-.footer-bottom {
-    font-size: 13px;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    padding-top: 40px;
-    color: var(--gray);
+.cta-btn:hover .arrow {
+    transform: translateX(4px);
 }
 
-.disclaimer {
-    margin-bottom: 25px;
-    line-height: 1.6;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-}
+/* --- 2-TIER FOOTER LAYOUT --- */
 
-.footer-links {
+/* 1. UPPER SECTION (Black) */
+.footer-links-container {
+    width: 100%;
+    background-color: #000;
+    /* Dark Black */
+    padding: 60px 20px;
     display: flex;
     justify-content: center;
-    gap: 15px;
-    margin-bottom: 25px;
-    font-weight: 500;
+    width: 100vw;
+    /* Full bleeding width */
+    margin-top: -60px;
+    /* Pull up to sit behind CTA if needed, or just standard flow */
+    padding-top: 100px;
+    /* Extra padding if sitting behind CTA space */
 }
 
-.footer-links a {
-    text-decoration: none;
-    color: var(--textDark);
-    transition: color 0.2s ease;
-    position: relative;
-}
-
-.footer-links a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 1px;
-    bottom: -2px;
-    left: 0;
-    background-color: var(--primary);
-    transition: width 0.3s ease;
-}
-
-.footer-links a:hover {
-    color: var(--primary);
-}
-
-.footer-links a:hover::after {
+/* Wrapper to constrain content width within the full-width bars */
+.links-grid-wrapper {
     width: 100%;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    /* 5 Equal columns */
+    gap: 20px;
 }
 
-.separator {
-    color: #ccc;
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-top-logo {
+    width: 100%;
+    max-width: 180px; /* Constrain width to column */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: contain;
+    align-self: flex-start;
+}
+
+.footer-col h4 {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.footer-col a {
+    color: #999;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s;
+    line-height: 1.6;
+}
+
+.footer-col a:hover {
+    color: #fff;
+}
+
+/* Connect / Socials */
+.connect-col {
+    /* Align to start same as others */
+    align-items: flex-start;
+}
+
+/* If the user wants the Connect column to be totally right aligned or distinct */
+.social-icons-grid {
+    display: flex;
+    gap: 12px;
+}
+
+.social-icons-grid a {
+    background: #222;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    color: #fff;
+    transition: all 0.2s;
+}
+
+.social-icons-grid a:hover {
+    background: #333;
+    color: var(--primary, #FE911E);
+    /* Use primary on hover */
+}
+
+
+/* 2. LOWER SECTION (Grey) */
+.footer-legal-bar {
+    width: 100%;
+    width: 100vw;
+    background-color: #1a1a1a;
+    /* Dark Grey Bar */
+    padding: 30px 20px;
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid #333;
+}
+
+.legal-content-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.legal-left {
+    display: flex;
+    align-items: center;
+    gap: 40px;
 }
 
 .copyright {
-    margin-top: 15px;
+    color: #666;
+    font-size: 12px;
+}
+
+.legal-links {
+    display: flex;
+    gap: 20px;
+}
+
+.legal-links a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.legal-links a:hover {
+    text-decoration: underline;
+}
+
+.legal-right-logo img {
+    height: 30px;
+    /* Small tasteful logo in the bar */
     opacity: 0.8;
 }
 
-/* Responsive Adjustments */
+
+/* Animations */
+.anim-item {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+.animate-in .anim-item {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ================================
+   MOBILE OPTIMIZATION
+================================ */
 @media (max-width: 768px) {
-    .footer-heading {
-        font-size: 32px;
-    }
 
-    .footer-actions {
-        flex-direction: column;
-        gap: 15px;
-        align-items: center;
-    }
+  /* FOOTER WRAPPER */
+  .footer-wrapper {
+    padding-top: 60px;
+  }
 
-    .btn-footer-primary,
-    .btn-footer-secondary {
-        width: 100%;
-        max-width: 300px;
-    }
+  /* CTA CARD */
+  .footer-cta-card {
+    margin-bottom: 60px;
+    padding: 50px 20px;
+    border-radius: 28px;
+  }
+
+  .cta-content h2 {
+    font-size: 28px;
+    line-height: 1.3;
+    margin-bottom: 28px;
+  }
+
+  .cta-btn {
+    padding: 14px 26px;
+    font-size: 15px;
+  }
+
+  /* LINKS SECTION */
+  .footer-links-container {
+    padding: 60px 20px;
+    margin-top: 0;
+  }
+
+  /* GRID → STACK */
+  .links-grid-wrapper {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  /* LOGO COLUMN FULL WIDTH */
+  .logo-col {
+    grid-column: span 2;
+    margin-bottom: 20px;
+  }
+
+  .footer-top-logo {
+    max-width: 140px;
+  }
+
+  /* COLUMN TEXT */
+  .footer-col h4 {
+    font-size: 14px;
+  }
+
+  .footer-col a {
+    font-size: 13px;
+  }
+
+  /* SOCIAL ICONS */
+  .social-icons-grid {
+    gap: 14px;
+  }
+
+  .social-icons-grid a {
+    width: 38px;
+    height: 38px;
+  }
+
+  /* LEGAL BAR */
+  .footer-legal-bar {
+    padding: 24px 20px;
+  }
+
+  .legal-content-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .legal-left {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .legal-links {
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .copyright {
+    font-size: 11px;
+  }
+}
+
+/* EXTRA SMALL DEVICES */
+@media (max-width: 420px) {
+
+  .links-grid-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .logo-col {
+    grid-column: span 1;
+  }
+
+  .cta-content h2 {
+    font-size: 24px;
+  }
 }

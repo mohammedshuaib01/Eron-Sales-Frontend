@@ -52,13 +52,14 @@ const HeroDemo = () => {
                     when you can have your own <span className="highlight-text">CRM</span>
                 </h1>
 
-                <p className="hero-subtext">
+                {/* <p className="hero-subtext">
                     If rising CRM subscription fees are costing you time, money, and team focus,
                     it’s time for a smarter choice <br /> that grows with your business not your budget.
-                </p>
+                </p> */}
 
                 <div className="hero-cta-group">
                     <button className="btn-primary">GET STARTED<span className="arrow"></span></button>
+
                 </div>
             </div>
         </div>

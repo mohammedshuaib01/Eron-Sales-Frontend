@@ -7,6 +7,7 @@ import Footer from './components/Footer/Footer'
 import HeroDemo from './components/Hero/HeroDemo'
 import Scrollsection from './components/Scrollsection/Scrollsection'
 import Price from './components/Price/Price'
+import FAQ from './components/FAQ/FAQ'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <About />
       <Scrollsection />
       <Price />
+      <FAQ />
       <Footer />
     </div>
   )

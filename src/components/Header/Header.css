@@ -38,11 +38,6 @@
   /* Let clicks pass through the invisible header parts */
 }
 
-
-
-
-
-
 .logo-image-header {
   width: 140px;
   position: relative;
@@ -99,8 +94,25 @@
   text-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
 }
 
+/* Group buttons container */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  position: relative;
+  z-index: 10;
+  transition: all 0.6s ease;
+}
+
+.main-header.scrolled .header-actions {
+  opacity: 0;
+  transform: translateX(-180px);
+  pointer-events: none;
+}
+
 .join-btn {
-  padding: 1rem 2rem;
+  padding: 0.8rem 1.8rem;
+  /* Slightly reduced padding for better fit */
   border-radius: 25px;
   border: none;
   background: white;
@@ -113,12 +125,288 @@
   font-weight: 500;
 }
 
-.main-header.scrolled .join-btn {
-  opacity: 0;
-  transform: translateX(-180px);
-  pointer-events: none;
-}
+/* Remove old individual button styling that relied on direct child of header if any */
+/* .main-header.scrolled .join-btn { removed here as it is handled by .header-actions now } */
 
 .join-btn:hover {
   background: #f1f1f1;
+}
+
+.btn-whatsapp-header {
+  background: linear-gradient(90deg, #25D366 0%, #128C7E 100%);
+  color: #ffffff;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: transform 0.35s cubic-bezier(.22, 1.61, .36, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  text-decoration: none;
+}
+
+.btn-whatsapp-header:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+}
+
+.whatsapp-icon-header {
+  width: 20px;
+  height: 20px;
+}
+
+/* -------------------------------------------------- */
+/*               MOBILE MENU STYLES                   */
+/* -------------------------------------------------- */
+
+.hamburger-menu {
+  display: none;
+  /* Hidden by default */
+  flex-direction: column;
+  justify-content: center;
+  /* Center lines vertically */
+  gap: 6px;
+  /* Precise spacing between lines */
+  width: 35px;
+  /* Slightly wider to accommodate visual balance */
+  height: 30px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 101;
+  /* Above mobile menu overlay */
+  padding: 0;
+  align-items: flex-start;
+  /* Align lines to the left */
+}
+
+.hamburger-menu span {
+  height: 4px;
+  /* Thicker lines */
+  background-color: white;
+  transition: all 0.3s ease;
+  border-radius: 10px;
+  /* Rounded caps */
+}
+
+.hamburger-menu span:nth-child(1) {
+  width: 50%;
+  /* Shortest (Top) */
+}
+
+.hamburger-menu span:nth-child(2) {
+  width: 75%;
+  /* Medium (Middle) */
+}
+
+.hamburger-menu span:nth-child(3) {
+  width: 100%;
+  /* Longest (Bottom) */
+}
+
+/* Mobile Menu Overlay */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  /* Dim background */
+  backdrop-filter: blur(5px);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Mobile Menu Drawer (Side Panel) */
+.mobile-menu-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* Slide in from left */
+  width: 75%;
+  /* Adjust as per design */
+  max-width: 300px;
+  height: 100%;
+  background: white;
+  z-index: 1001;
+  /* On top of overlay */
+  transform: translateX(-100%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  box-shadow: 5px 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-menu-drawer.open {
+  transform: translateX(0);
+}
+
+/* Drawer Internal Structure */
+.mobile-menu-header {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 30px;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 32px;
+  color: #c9a72b;
+  /* Matches key color in design */
+  cursor: pointer;
+  line-height: 1;
+}
+
+.mobile-nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex-grow: 1;
+}
+
+.mobile-nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mobile-nav-links a.has-dropdown span {
+  font-size: 12px;
+}
+
+.mobile-nav-links a:hover {
+  color: #000;
+  font-weight: 700;
+}
+
+/* Mobile Menu Footer */
+.mobile-menu-footer {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mobile-contact-btn {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(90deg, #25D366 0%, #128C7E 100%);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(37, 211, 102, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  font-family: 'Cabinet Grotesk', sans-serif;
+}
+
+.social-icons {
+  display: flex;
+  gap: 25px;
+  /* Spacing between icons */
+  padding-left: 15px;
+  /* Visual alignment with rounded button */
+  margin-top: 20px;
+  /* More space from button */
+  align-items: center;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  /* Dark arrow/icon color */
+  transition: color 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.social-icon svg {
+  width: 25px;
+  /* Adjust size to match design */
+  height: 25px;
+  fill: currentColor;
+}
+
+.social-icon:hover {
+  color: #c9a72b;
+  /* Gold/Yellow hover color */
+}
+
+/* Responsive Media Queries */
+@media (max-width: 768px) {
+  .main-header {
+    padding: 0 20px;
+    height: 70px;
+  }
+
+  /* Hide Desktop Nav and Button Group */
+  .nav-links,
+  .header-actions {
+    display: none !important;
+    /* Force hide on mobile */
+  }
+
+  /* Show Hamburger */
+  .hamburger-menu {
+    display: flex;
+  }
+
+  /* Override Scrolled State for Mobile - Disable "Pill" effect */
+  .main-header.scrolled {
+    background: rgba(255, 255, 255, 0.1);
+    /* or keep original blur */
+    backdrop-filter: blur(20px);
+    padding: 0 20px;
+    /* Restore padding */
+    pointer-events: auto;
+    /* Enable clicks */
+    justify-content: space-between;
+    /* Restore alignment */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  }
+
+  .main-header.scrolled .logo-image-header {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+
+  .main-header.scrolled .hamburger-menu {
+    background: transparent;
+    margin: 0;
+    width: 35px;
+    height: 30px;
+    padding: 0;
+  }
 }

@@ -1,5 +1,6 @@
 .price-section-3d {
-    background-color: #0c0c0c;
+    /* background-color: #0c0c0c; */
+    background-color: black;
     min-height: 80vh;
     display: flex;
     justify-content: center;
@@ -29,7 +30,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    animation: fadeIn 0.8s ease-out;
+    /* animation: fadeIn 0.8s ease-out; Removed in favor of scroll trigger */
 }
 
 .price-info-right h2 {
@@ -344,17 +345,17 @@
     border-left-color: rgba(247, 254, 44, 0.2);
 }
 
-/* Animation */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
+/* Animations */
+.anim-item {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.animate-in .anim-item {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Mobile */
