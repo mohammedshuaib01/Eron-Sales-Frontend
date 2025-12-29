@@ -6,7 +6,7 @@
   font-family: 'Cabinet Grotesk', sans-serif;
 }
 
-.scroll-container {
+.desktop-view {
   display: flex;
   max-width: 1400px;
   margin: 0 auto;
@@ -190,26 +190,59 @@
   margin-bottom: 24px;
 }
 
+.desktop-view {
+  display: block;
+}
+
+.mobile-view {
+  display: none;
+}
+
+
 /* Responsive adjustments */
 @media (max-width: 1024px) {
-  .scroll-container {
-    flex-direction: column;
-    padding-top: 50px;
+  .desktop-view {
+    display: none;
   }
 
-  .sticky-column {
-    position: relative;
-    top: 0;
-    height: auto;
+  .mobile-view {
+    display: block;
+  }
+
+  .mobile-main-title {
+    font-size: 34px;
+    font-weight: 600;
+    text-align: center;
     margin-bottom: 40px;
   }
 
-  .image-stack {
-    aspect-ratio: 16/9;
-    max-width: 100%;
+  .mobile-main-title span {
+    color: #EAC23F;
   }
 
-  .content-block {
-    min-height: 50vh;
+  .mobile-feature {
+    margin-right: 30px;
+    margin-left: 30px;
+    margin-bottom: 76px;
+    text-align: center;
   }
+
+  .mobile-image {
+    width: 100%;
+    border-radius: 16px;
+    margin-bottom: 20px;
+  }
+
+  .mobile-title {
+    font-size: 22px;
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+
+  .mobile-description {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #444;
+  }
+
 }

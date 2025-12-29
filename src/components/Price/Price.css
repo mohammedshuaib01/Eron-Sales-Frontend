@@ -49,7 +49,7 @@
 /* --- Left Side: Calculator Wrapper --- */
 .calculator-wrapper {
     flex: 1.3;
-    background: rgba(255, 255, 255, 0.02);
+    background: rgba(255, 255, 255, 0.118);
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 40px;
     padding: 180px 40px 40px;

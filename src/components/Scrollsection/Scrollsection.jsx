@@ -82,7 +82,7 @@ const Scrollsection = () => {
 
   return (
     <section className={`scroll-section ${isVisible ? 'animate-in' : ''}`} ref={sectionRef}>
-      <div className="scroll-container">
+      <div className="desktop-view">
         {/* Left: Sticky Title */}
         <div className="sticky-column left-text">
           <div className="text-wrapper">
@@ -123,6 +123,21 @@ const Scrollsection = () => {
           ))}
         </div>
       </div>
+
+       {/* ================= MOBILE VIEW (NEW) ================= */}
+    <div className="mobile-view">
+      <h1 className="mobile-main-title">
+        Powerful <span>Tools</span> For Your <span>Growth</span>
+      </h1>
+
+      {steps.map((step, index) => (
+        <div className="mobile-feature" key={index}>
+          <img src={step.img} alt={step.title} className="mobile-image" />
+          <h2 className="mobile-title">{step.title}</h2>
+          <p className="mobile-description">{step.description}</p>
+        </div>
+      ))}
+    </div>
     </section>
   );
 };
