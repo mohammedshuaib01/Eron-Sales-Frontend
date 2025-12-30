@@ -61,7 +61,7 @@ const Price = () => {
             {/* Left Chart (Yellow - Fixed) */}
             <div className="chart-item left-item">
               <div className="text-content">
-                <span className="big-percent" style={{ color: '#F7FE2C' }}>${Math.round(leftValue)}</span>
+                <span className="big-percent" style={{ color: '#F7FE2C' }}>₹{Math.round(leftValue)}</span>
                 <p style={{ color: '#F7FE2C' }}>ERON CRM</p>
               </div>
               <div className="bar-visual" style={{ height: `${leftValue * 3}px` }}>
@@ -76,7 +76,7 @@ const Price = () => {
             {/* Right Chart (White - Dynamic) */}
             <div className="chart-item right-item">
               <div className="text-content">
-                <span className="big-percent">${Math.round(rightValue)}</span>
+                <span className="big-percent">₹{Math.round(rightValue)}</span>
                 <p>ZOHO CRM</p>
               </div>
               <div className="bar-visual" style={{ height: `${rightValue * 4}px` }}> {/* Height animated via CSS transition, separate from entrance */}
