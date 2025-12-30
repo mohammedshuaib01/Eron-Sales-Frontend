@@ -62,7 +62,6 @@ const Price = () => {
             <div className="chart-item left-item">
               <div className="text-content">
                 <span className="big-percent" style={{ color: '#F7FE2C' }}>₹{Math.round(leftValue)}</span>
-                <p style={{ color: '#F7FE2C' }}>ERON CRM</p>
               </div>
               <div className="bar-visual" style={{ height: `${leftValue * 3}px` }}>
                 <div className="dot-top yellow-dot"></div>
@@ -71,13 +70,13 @@ const Price = () => {
                 <div className="dashed-drop-left yellow-drop"></div>
                 <div className="dashed-drop-right yellow-drop"></div>
               </div>
+              <p className="chart-label" style={{ color: '#F7FE2C' }}>ERON CRM</p>
             </div>
 
             {/* Right Chart (White - Dynamic) */}
             <div className="chart-item right-item">
               <div className="text-content">
                 <span className="big-percent">₹{Math.round(rightValue)}</span>
-                <p>ZOHO CRM</p>
               </div>
               <div className="bar-visual" style={{ height: `${rightValue * 4}px` }}> {/* Height animated via CSS transition, separate from entrance */}
                 <div className="dot-top"></div>
@@ -86,6 +85,7 @@ const Price = () => {
                 <div className="dashed-drop-left"></div>
                 <div className="dashed-drop-right"></div>
               </div>
+              <p className="chart-label">ZOHO CRM</p>
             </div>
 
           </div>
