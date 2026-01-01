@@ -381,7 +381,7 @@
         padding: 40px 20px;
     }
 
-   
+
 
 
 }
@@ -424,5 +424,14 @@
 
     .slider-container {
         width: 95%;
+    }
+
+    .price-info-right h2 {
+        font-size: 42px;
+    }
+
+    .price-info-right .highlight-yellow {
+        font-size: 42px !important;
+        /* font-weight: 500 !important; */
     }
 }

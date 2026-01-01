@@ -83,15 +83,14 @@ const Header = () => {
           <button className="close-btn" onClick={toggleMenu}>
             ×
           </button>
-        </div>
+        </div>  
         <nav className="mobile-nav-links">
           <a href="/" onClick={toggleMenu}>HOME</a>
-          <a href="/about" onClick={toggleMenu}>ABOUT US</a>
-          <a href="/classes" className="has-dropdown" onClick={toggleMenu}>CLASSES <span>&#8964;</span></a>
-          <a href="/parents" onClick={toggleMenu}>PARENTS</a>
-          <a href="/gallery" onClick={toggleMenu}>GALLERY</a>
-          <a href="/contact" onClick={toggleMenu}>CONTACT</a>
-        </nav>
+          <a href="/product" onClick={toggleMenu}>PRODUCT</a>
+          <a href="/solution" onClick={toggleMenu}>SOLUTION</a>
+          <a href="/pricing" onClick={toggleMenu}>PRICING</a>
+          <a href="/community" onClick={toggleMenu}>COMMUNITY</a>
+        </nav>  
 
         <div className="mobile-menu-footer">
           <a href="https://wa.me/YOUR_NUMBER" target="_blank" rel="noopener noreferrer" className="mobile-contact-btn btn-whatsapp-mobile">
