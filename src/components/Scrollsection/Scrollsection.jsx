@@ -127,7 +127,7 @@ const Scrollsection = () => {
        {/* ================= MOBILE VIEW (NEW) ================= */}
     <div className="mobile-view">
       <h1 className="mobile-main-title">
-        Powerful <span>Tools</span> For Your <span>Growth</span>
+        Powerful <span>Tools</span><br/> For Your <span>Growth</span>
       </h1>
 
       {steps.map((step, index) => (

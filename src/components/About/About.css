@@ -186,8 +186,14 @@
     }
 
     .headline-box h2 {
-        font-size: 42px;
+        font-size: 60px;
+        
         /* Reduced from 48px */
+    }
+
+    .highlight-yellow{
+        font-size: 60px !important;
+        /* Reduced from 64px */
     }
 
     .crm-section {

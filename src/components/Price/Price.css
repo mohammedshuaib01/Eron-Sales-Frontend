@@ -370,10 +370,7 @@
         padding: 40px 20px;
     }
 
-    .price-info-right {
-        align-items: center;
-        text-align: center;
-    }
+
 
     .price-info-right h2 {
         font-size: 42px;
@@ -383,13 +380,25 @@
         width: 100%;
         padding: 40px 20px;
     }
+
+   
+
+
 }
 
 @media (max-width: 600px) {
+
+
+
     .chart-stage {
         /* gap: 5px; */
         /* padding: 20px 0; */
         justify-content: space-between;
+        transform: scale(0.85);
+        /* Slightly scale down to fit tall bars */
+        transform-origin: bottom center;
+        margin-bottom: -20px;
+        /* Counteract space from scaling */
     }
 
     .chart-item {
@@ -409,7 +418,8 @@
     }
 
     .calculator-wrapper {
-        padding: 40px 8px;
+        padding: 90px 10px 40px;
+        /* Increased top padding for floating elements */
     }
 
     .slider-container {
