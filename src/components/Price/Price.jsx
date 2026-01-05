@@ -36,16 +36,22 @@ const Price = () => {
     setUsers(Number(e.target.value));
   };
 
-  // Calculate percentage for slider background/tooltip alignment
-  const maxUsers = 50; // slider max
+  // Per user rates
+  const ERON_RATE = 399;
+  const ZOHO_RATE = 1299;
+
+  // Calculate pricing based on user count
+  const leftValue = ERON_RATE * users;
+  const rightValue = ZOHO_RATE * users;
+
+  // Scaling for visual bars to fit in the 400px container
+  const maxUsers = 50;
   const percentage = ((users - 1) / (maxUsers - 1)) * 100;
+  const maxPossibleValue = ZOHO_RATE * maxUsers;
+  const visualMaxHeight = 320; // height in px
 
-  // Yellow bar: 10% base + slight increase up to 20%
-  const leftValue = 10 + (percentage / 100) * 10;
-
-  // Logic: Base 25% + Scaled growth to reach exactly 100% at maxUsers
-  // Linear interpolation: Start at 25, Add up to 75 based on slider percentage
-  const rightValue = 25 + (percentage / 100) * 75;
+  const leftBarHeight = Math.max((leftValue / maxPossibleValue) * visualMaxHeight, 40);
+  const rightBarHeight = Math.max((rightValue / maxPossibleValue) * visualMaxHeight, 40);
 
   return (
     <section className="price-section-3d" ref={sectionRef}>
@@ -63,7 +69,7 @@ const Price = () => {
               <div className="text-content">
                 <span className="big-percent" style={{ color: '#F7FE2C' }}>₹{Math.round(leftValue)}</span>
               </div>
-              <div className="bar-visual" style={{ height: `${leftValue * 3}px` }}>
+              <div className="bar-visual" style={{ height: `${leftBarHeight}px` }}>
                 <div className="dot-top yellow-dot"></div>
                 <div className="dashed-line yellow-dash"></div>
                 <div className="top-plate yellow-plate"></div>
@@ -78,7 +84,7 @@ const Price = () => {
               <div className="text-content">
                 <span className="big-percent">₹{Math.round(rightValue)}</span>
               </div>
-              <div className="bar-visual" style={{ height: `${rightValue * 4}px` }}> {/* Height animated via CSS transition, separate from entrance */}
+              <div className="bar-visual" style={{ height: `${rightBarHeight}px` }}> {/* Height animated via CSS transition, separate from entrance */}
                 <div className="dot-top"></div>
                 <div className="dashed-line"></div>
                 <div className="top-plate"></div>
@@ -123,8 +129,8 @@ const Price = () => {
             <span className="highlight-yellow">Real Growth.</span>
           </h2>
           <p className="anim-item" style={{ maxWidth: '400px', fontSize: '18px', color: '#999', lineHeight: '1.6', transitionDelay: '100ms' }}>
-            See how your referral bonuses stack up against standard rates.
-            Maximize your potential returns as you grow your network.
+            Compare Eron CRM's transparent pricing against industry leaders.
+            Save significantly as you scale your team and your business.
           </p>
         </div>
 

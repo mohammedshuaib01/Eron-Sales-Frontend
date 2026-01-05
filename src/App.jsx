@@ -8,6 +8,7 @@ import HeroDemo from './components/Hero/HeroDemo'
 import Scrollsection from './components/Scrollsection/Scrollsection'
 import Price from './components/Price/Price'
 import FAQ from './components/FAQ/FAQ'
+import FooterDemo from './components/Footer/FooterDemo'
 
 function App() {
   return (
@@ -19,7 +20,8 @@ function App() {
       <Scrollsection />
       <Price />
       <FAQ />
-      <Footer />
+      {/* <Footer/> */}
+      <FooterDemo />
     </div>
   )
 }

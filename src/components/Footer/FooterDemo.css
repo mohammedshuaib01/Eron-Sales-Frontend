@@ -1,0 +1,370 @@
+.footer-container {
+    background-color: #000;
+    color: #fff;
+    width: 100%;
+    padding: 5vw 3vw 2vw 3vw;
+    /* Responsive padding */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    /* Make it substantial like the reference */
+    font-family: 'Neue Montreal', sans-serif;
+    /* Assuming a similar font is available or fallback */
+    position: relative;
+    overflow: hidden;
+    align-items: center;
+    /* Center the CTA card */
+}
+
+/* --- CTA Gradient Card --- */
+.footer-cta-card {
+    width: 90%;
+    max-width: 1200px;
+    background: linear-gradient(135deg, #d5d5d5 0%, #d5d5d5 100%);
+
+    /* Assuming orange primary */
+    border-radius: 40px;
+    padding: 80px 40px;
+    text-align: center;
+    margin-bottom: 50px;
+    /* Spacing before the rest of footer */
+    position: relative;
+    margin-top: 40px;
+    z-index: 10;
+}
+
+.cta-content h2 {
+    font-family: 'Neue Montreal', sans-serif;
+    /* Match new font */
+    font-size: 53px;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 40px;
+    color: #000;
+}
+
+.cta-btn {
+    background: #000;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 16px 32px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cta-btn .arrow {
+    transition: transform 0.3s ease;
+}
+
+.cta-btn:hover {
+    background: #222;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.cta-btn:hover .arrow {
+    transform: translateX(4px);
+}
+
+/* Top Section */
+.footer-content {
+    width: 100%;
+    /* Ensure content takes full width */
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    /* Align bottom of links and newsletter */
+    margin-bottom: 5vh;
+    padding-top: 100px;
+    z-index: 2;
+    position: relative;
+    /* Removed extra side padding to align with container edges */
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: 500;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.footer-link:hover {
+    opacity: 0.7;
+}
+
+/* Newsletter */
+.footer-newsletter {
+    max-width: 400px;
+    text-align: right;
+    /* Align text to right to match edge */
+}
+
+.footer-newsletter p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    line-height: 1.4;
+    opacity: 0.9;
+}
+
+.email-input-wrapper {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    padding-bottom: 10px;
+    justify-content: flex-end;
+    /* Align input content to right if needed, or keep standard */
+}
+
+.email-input-wrapper input {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1.1rem;
+    width: 100%;
+    outline: none;
+    /* Input text from right */
+}
+
+/* Mobile overrides for input alignment will be at the bottom */
+
+.email-input-wrapper input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.email-input-wrapper button {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    margin-left: 10px;
+    /* Space between input and arrow */
+}
+
+.email-input-wrapper button:hover {
+    transform: translateX(5px);
+}
+
+/* Brand Title */
+.footer-brand-title {
+    font-size: 16vw;
+
+    /* Massive responsive font size */
+    line-height: 0.8;
+    font-weight: 900;
+    text-align: center;
+    margin: 5vh 0;
+    letter-spacing: -0.05em;
+    user-select: none;
+    color: #ffffff98;
+    /* Removed border-bottom here to avoid double borders with footer-bottom */
+    padding-bottom: 2rem;
+}
+
+/* Bottom Bar */
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 30px;
+    margin-top: 20px;
+    font-size: 1rem;
+    opacity: 0.7;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    /* Separator Line */
+    width: 100%;
+}
+
+.footer-bottom-item {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-bottom-item span {
+    cursor: pointer;
+}
+
+.footer-bottom-item a {
+    color: #fff;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.footer-bottom-item a:hover {
+    opacity: 0.7;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .footer-container {
+        padding: 10vw 5vw 5vw 5vw;
+        /* More padding on top/bottom for mobile */
+    }
+
+    /* CTA Card Mobile */
+    .footer-cta-card {
+        padding: 50px 20px;
+        margin-top: 20px;
+        border-radius: 30px;
+    }
+
+    .cta-content h2 {
+        font-size: 28px;
+        margin-bottom: 25px;
+    }
+
+    .cta-btn {
+        padding: 12px 24px;
+        font-size: 14px;
+    }
+
+    /* Footer Content Mobile */
+    .footer-top {
+        flex-direction: column;
+        gap: 60px;
+        margin-bottom: 4vh;
+        padding-bottom: 2rem;
+        align-items: center;
+        /* Center align items in the column */
+    }
+
+    .footer-links {
+        gap: 15px;
+        align-items: center;
+        /* Center links */
+        text-align: center;
+    }
+
+    .footer-link {
+        font-size: 1.8rem;
+    }
+
+    .footer-newsletter {
+        width: 100%;
+        text-align: center;
+        /* Center newsletter text */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-newsletter p {
+        font-size: 1.1rem;
+        text-align: center;
+    }
+
+    .email-input-wrapper {
+        justify-content: center;
+        /* Center input wrapper */
+        width: 100%;
+        max-width: 300px;
+        /* Limit width */
+    }
+
+    .email-input-wrapper input {
+        text-align: center;
+        /* Center input text */
+    }
+
+    .email-input-wrapper input::placeholder {
+        text-align: center;
+    }
+
+    /* Brand Title Mobile */
+    .footer-brand-title {
+        font-size: 23vw;
+        margin: 3vh 0;
+        padding-bottom: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        line-height: 0.85;
+    }
+
+    .footer-brand-title .brand-space {
+        display: none;
+    }
+
+    /* Sub-footer Mobile */
+    .footer-bottom {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        /* Center align for mobile aesthetics */
+        text-align: center;
+        padding-top: 25px;
+    }
+
+    .footer-bottom-item {
+        justify-content: center;
+    }
+}
+
+/* Scroll to Top Button */
+.footer-scroll-top {
+    position: fixed;
+    /* Fixed on screen */
+    bottom: 90px;
+    right: 40px;
+    width: 60px;
+    height: 60px;
+    border: 1px solid #fff;
+    /* White border */
+    background-color: #000;
+    /* Black background */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+    z-index: 9999;
+    /* Ensure it floats above everything */
+    opacity: 0;
+    /* Hidden by default */
+    pointer-events: none;
+    transform: translateY(20px);
+}
+
+.footer-scroll-top.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.footer-scroll-top svg {
+    width: 24px;
+    height: 24px;
+    color: #fff;
+    /* White arrow */
+}
+
+.footer-scroll-top:hover {
+    background-color: #fff;
+    color: #000;
+    transform: scale(1.1);
+}
+
+.footer-scroll-top:hover svg {
+    color: #000;
+}
