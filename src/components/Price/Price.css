@@ -435,3 +435,34 @@
         /* font-weight: 500 !important; */
     }
 }
+
+/* WhatsApp Button Styles (Copied from Header for Price Section) */
+.btn-whatsapp-price {
+    background: linear-gradient(90deg, #25D366 0%, #128C7E 100%);
+    color: #ffffff;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: transform 0.35s cubic-bezier(.22, 1.61, .36, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    font-family: 'Cabinet Grotesk', sans-serif;
+    text-decoration: none;
+    margin-top: 24px;
+    /* Added margin for spacing in Price section */
+}
+
+.btn-whatsapp-price:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+}
+
+.whatsapp-icon-price {
+    width: 20px;
+    height: 20px;
+}

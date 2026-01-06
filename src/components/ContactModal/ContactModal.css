@@ -1,0 +1,226 @@
+/* Modal Overlay - Glassmorphism */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease-out forwards;
+    padding: 20px;
+}
+
+/* Modal Content Box */
+.modal-content {
+    background: #0f0f0f;
+    width: 100%;
+    max-width: 900px;
+    /* Wider for horizontal layout */
+    border-radius: 24px;
+    padding: 50px;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    transform-origin: center center;
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: row;
+    gap: 60px;
+    align-items: flex-start;
+}
+
+/* Left Side: Info */
+.modal-left {
+    flex: 1;
+    padding-top: 20px;
+}
+
+/* Right Side: Form */
+.modal-right {
+    flex: 1.5;
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 25px;
+    right: 30px;
+    background: transparent;
+    border: none;
+    color: #666;
+    font-size: 32px;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.3s;
+    z-index: 10;
+}
+
+.modal-close-btn:hover {
+    color: #fff;
+}
+
+.modal-title {
+    font-size: 48px;
+    font-family: 'Cabinet Grotesk', sans-serif;
+    color: #fff;
+    margin-bottom: 16px;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.modal-subtitle {
+    color: #888;
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 300px;
+}
+
+/* Form Styles */
+.modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    color: #ccc;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+}
+
+.form-group input,
+.form-group textarea {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 12px 16px;
+    color: #fff;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: border-color 0.3s, background 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #F7FE2C;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Submit Button */
+.modal-submit-btn {
+    margin-top: 10px;
+    background: #F7FE2C;
+    color: #000;
+    border: none;
+    padding: 16px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: 'Cabinet Grotesk', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: transform 0.2s, background 0.2s;
+    width: 100%;
+}
+
+.modal-submit-btn:hover {
+    transform: scale(1.02);
+    background: #eef528;
+}
+
+.modal-submit-btn .arrow {
+    font-size: 20px;
+    transition: transform 0.3s;
+}
+
+.modal-submit-btn:hover .arrow {
+    transform: translateX(5px);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .modal-content {
+        padding: 30px 20px;
+        margin: 10px;
+        width: 95%;
+        max-width: 500px;
+    }
+
+    .modal-body {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .modal-title {
+        font-size: 32px;
+    }
+
+    .modal-left {
+        padding-top: 0;
+        text-align: center;
+    }
+
+    .modal-subtitle {
+        margin: 0 auto;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 20px;
+    }
+}

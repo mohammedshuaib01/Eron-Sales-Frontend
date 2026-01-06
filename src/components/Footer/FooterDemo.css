@@ -175,7 +175,7 @@
     margin: 5vh 0;
     letter-spacing: -0.05em;
     user-select: none;
-    color: #ffffff98;
+    color: #fff;
     /* Removed border-bottom here to avoid double borders with footer-bottom */
     padding-bottom: 2rem;
 }

@@ -1,4 +1,5 @@
-import React from 'react'
+import ContactModal from './components/ContactModal/ContactModal'
+import React, { useState } from 'react'
 import './styles/Colour.css'
 import Header from './components/Header/Header'
 import Hero from './components/Hero/Hero'
@@ -10,18 +11,26 @@ import Price from './components/Price/Price'
 import FAQ from './components/FAQ/FAQ'
 import FooterDemo from './components/Footer/FooterDemo'
 
+
+
 function App() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   return (
     <div>
+      <ContactModal isOpen={isModalOpen} onClose={closeModal} />
       <Header />
-      <HeroDemo />
+      <HeroDemo onOpenModal={openModal} />
       {/* <Hero /> */}
       <About />
       <Scrollsection />
       <Price />
       <FAQ />
       {/* <Footer/> */}
-      <FooterDemo />
+      <FooterDemo onOpenModal={openModal} />
     </div>
   )
 }

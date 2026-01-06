@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import './HeroDemo.css';
 import LightRays from '../../elements/lightray/LightRay';
 
-const HeroDemo = () => {
+const HeroDemo = ({ onOpenModal }) => {
     const [isVisible, setIsVisible] = useState(false);
     const heroRef = useRef(null);
 
@@ -58,7 +58,7 @@ const HeroDemo = () => {
                 </p> */}
 
                 <div className="hero-cta-group">
-                    <button className="btn-primary">GET STARTED<span className="arrow"></span></button>
+                    <button className="btn-primary" onClick={onOpenModal}>GET STARTED<span className="arrow"></span></button>
 
                 </div>
             </div>

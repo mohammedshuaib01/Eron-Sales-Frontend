@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { HashLink } from "react-router-hash-link";
+
 import './FooterDemo.css';
 
-function FooterDemo() {
+function FooterDemo({ onOpenModal }) {
   const [showScroll, setShowScroll] = useState(false);
   const [time, setTime] = useState(new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }));
 
@@ -35,8 +37,8 @@ function FooterDemo() {
             Send Your First 1,000 With<br />
             Eron CRM For Free
           </h2>
-          <button className="cta-btn">
-            Start for Free Now <span className="arrow">→</span>
+          <button className="cta-btn" onClick={onOpenModal}>
+            GET STARTED<span className="arrow">→</span>
           </button>
         </div>
       </div>
@@ -47,10 +49,10 @@ function FooterDemo() {
         {/* Upper content: Links and Newsletter */}
         <div className="footer-top">
           <div className="footer-links">
-            <a href="#" className="footer-link">Product</a>
-            <a href="#" className="footer-link">Solution</a>
-            <a href="#" className="footer-link">Pricing</a>
-            <a href="#" className="footer-link">Community</a>
+            <HashLink smooth to="#" className="footer-link">Home</HashLink>
+            <HashLink smooth to="https://www.sysdevcode.com/" className="footer-link">Service</HashLink>
+            <HashLink smooth to="https://www.sysdevcode.com/" className="footer-link">Academy</HashLink>
+            <HashLink smooth to="#pricing" className="footer-link">Pricing</HashLink>
           </div>
           <div className="footer-newsletter">
             <p>Get industry insights and creative inspiration straight to your inbox.</p>
@@ -79,7 +81,7 @@ function FooterDemo() {
         </div>
         <div className="footer-bottom-item">
           <span><a href="https://www.instagram.com/sysdevcode/" target="_blank" rel="noopener noreferrer">Instagram</a></span>
-          <span><a href="https://www.linkedin.com/in/sysdevcode/" target="_blank" rel="noopener noreferrer">LinkedIn</a></span>
+          <span><a href="https://www.linkedin.com/company/sysdevcode/" target="_blank" rel="noopener noreferrer">LinkedIn</a></span>
         </div>
       </div>
 
