@@ -45,7 +45,7 @@ const Header = () => {
     <>
       <header className={`main-header ${isScrolled ? "scrolled" : ""} ${isHidden ? "hidden" : ""}`}>
         <div className="logo">
-          <img className="logo-image-header" src="/eronlogo.png" alt="" />
+          <img className="logo-image-header" src="/eronlog.png" alt="" />
         </div>
 
         <nav className="nav-links">
