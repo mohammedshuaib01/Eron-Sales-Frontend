@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import './ContactModal.css';
 
-const ContactModal = ({ isOpen, onClose }) => {
+const ContactModal = ({ isOpen, onClose, onSuccess }) => {
 
     // Close on ESC
     useEffect(() => {
@@ -39,6 +39,7 @@ const ContactModal = ({ isOpen, onClose }) => {
                             target="hidden_iframe"
                             onSubmit={() => {
                                 setTimeout(() => {
+                                    if (onSuccess) onSuccess();
                                     alert("Thanks! We’ll contact you shortly.");
                                     onClose();
                                 }, 500);
