@@ -38,7 +38,7 @@ function FooterDemo({ onOpenModal }) {
             Eron CRM For Free
           </h2>
           <button className="cta-btn" onClick={onOpenModal}>
-            GET STARTED<span className="arrow">→</span>
+            Join the Waitlist<span className="arrow">→</span>
           </button>
         </div>
       </div>

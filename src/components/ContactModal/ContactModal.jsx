@@ -2,33 +2,19 @@ import React, { useEffect } from 'react';
 import './ContactModal.css';
 
 const ContactModal = ({ isOpen, onClose }) => {
-    // Close on Escape key
+
+    // Close on ESC
     useEffect(() => {
-        const handleEsc = (e) => {
-            if (e.key === 'Escape') onClose();
-        };
+        const handleEsc = (e) => e.key === 'Escape' && onClose();
         window.addEventListener('keydown', handleEsc);
         return () => window.removeEventListener('keydown', handleEsc);
     }, [onClose]);
 
-    // Prevent scrolling when modal is open
+    // Lock scroll
     useEffect(() => {
-        if (isOpen) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'auto'; // Changed to auto
-        }
-        return () => {
-            document.body.style.overflow = 'auto'; // Changed to auto
-        };
+        document.body.style.overflow = isOpen ? 'hidden' : 'auto';
+        return () => (document.body.style.overflow = 'auto');
     }, [isOpen]);
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Handle form submission logic here (e.g., API call)
-        alert("Thanks for contacting us! We'll get back to you soon.");
-        onClose();
-    };
 
     if (!isOpen) return null;
 
@@ -40,37 +26,62 @@ const ContactModal = ({ isOpen, onClose }) => {
                 <div className="modal-body">
                     <div className="modal-left">
                         <h2 className="modal-title">Get Started</h2>
-                        <p className="modal-subtitle">Join us and transform your business today.</p>
+                        <p className="modal-subtitle">
+                            Join us and transform your business today.
+                        </p>
                     </div>
 
                     <div className="modal-right">
-                        <form className="modal-form" onSubmit={handleSubmit}>
+                        <form
+                            className="modal-form"
+                            action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfEcgAs9Wp5SQrutIkBfL4AoR6gefT9dkKHj6MZ10ijQ6FvBg/formResponse"
+                            method="POST"
+                            target="hidden_iframe"
+                            onSubmit={() => {
+                                setTimeout(() => {
+                                    alert("Thanks! We’ll contact you shortly.");
+                                    onClose();
+                                }, 500);
+                            }}
+                        >
                             <div className="form-row">
                                 <div className="form-group">
-                                    <label htmlFor="name">Name</label>
-                                    <input type="text" id="name" placeholder="John Doe" required />
+                                    <label>Name</label>
+                                    <input
+                                        type="text"
+                                        name="entry.1347796074"
+                                        placeholder="John Doe"
+                                        required
+                                    />
                                 </div>
 
                                 <div className="form-group">
-                                    <label htmlFor="email">Email</label>
-                                    <input type="email" id="email" placeholder="john@example.com" required />
+                                    <label>Email</label>
+                                    <input
+                                        type="email"
+                                        name="entry.1505141721"
+                                        placeholder="john@example.com"
+                                        required
+                                    />
                                 </div>
                             </div>
 
                             <div className="form-group">
-                                <label htmlFor="phone">Phone</label>
-                                <input type="tel" id="phone" placeholder="+91 98765 43210" />
-                            </div>
-
-                            <div className="form-group">
-                                <label htmlFor="message">Message</label>
-                                <textarea id="message" rows="3" placeholder="Tell us about your needs..."></textarea>
+                                <label>Message</label>
+                                <textarea
+                                    name="entry.1488136435"
+                                    rows="3"
+                                    placeholder="Tell us about your needs..."
+                                ></textarea>
                             </div>
 
                             <button type="submit" className="modal-submit-btn">
-                                Submit Request <span className="arrow">→</span>
+                                Join Waiting List <span className="arrow">→</span>
                             </button>
                         </form>
+
+                        {/* Hidden iframe prevents redirect */}
+                        <iframe name="hidden_iframe" style={{ display: 'none' }} />
                     </div>
                 </div>
             </div>
