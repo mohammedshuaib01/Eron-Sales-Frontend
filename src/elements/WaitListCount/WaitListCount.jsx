@@ -1,23 +1,32 @@
 import { useEffect, useState } from "react";
 
-const SHEET_URL =
-  "https://docs.google.com/spreadsheets/d/1deVa_4qYHkWvlO7U28K3yIoxqz8Wwurl8N7lAgTbRAs/gviz/tq?tqx=out:json";
+const SHEET_CSV_URL =
+  "https://docs.google.com/spreadsheets/d/e/2PACX-1vR8XMSBSwVVMYGpqx3w9Ht8suwxdwipBaRYcyj_2-KpMdaPQboO6Y1XXmo0ZrBpcMe7VWKztqOhxaL6/pub?output=csv";
 
-function WaitListCount() {
+
+ const BASE_COUNT = 100;
+
+  function WaitListCount() {
   const [count, setCount] = useState(null);
 
   useEffect(() => {
-    fetch(SHEET_URL)
-      .then((res) => res.text())
-      .then((text) => {
-        const json = JSON.parse(text.substring(47).slice(0, -2));
-        setCount(json.table.rows.length);
+    fetch(SHEET_CSV_URL)
+      .then(res => res.text())
+      .then(text => {
+        const rows = text.trim().split("\n");
+        const actualCount = Math.max(rows.length - 1, 0); // remove header
+        setCount(actualCount);
       })
-      .catch(() => setCount(null));
+      .catch(err => {
+        console.error("CSV fetch failed:", err);
+        setCount(null);
+      });
   }, []);
 
-  // fallback while loading
-  if (count === null) return <>100+</>;
+  if (count === null) return <>{BASE_COUNT}</>;
+
+  
+  if (count < 100) return <>{BASE_COUNT + count}</>;
 
   return <>{count}</>;
 }
