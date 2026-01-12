@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './HeroDemo.css';
 import LightRays from '../../elements/lightray/LightRay';
+import WaitlistCount from '../../elements/WaitListCount/WaitListCount';
 
-const HeroDemo = ({ onOpenModal, waitlistCount }) => {
+const HeroDemo = ({ onOpenModal  }) => {
     const [isVisible, setIsVisible] = useState(false);
     const heroRef = useRef(null);
 
@@ -67,7 +68,7 @@ const HeroDemo = ({ onOpenModal, waitlistCount }) => {
                                 <path d="M20 19C20 16.2386 16.4183 14 12 14C7.58172 14 4 16.2386 4 19" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" />
                             </svg>
                         </div>
-                        <span className="joined-text"> <span className="highlight-count">{waitlistCount} </span>   people already on the waitlist</span>
+                        <span className="joined-text"> <span className="highlight-count"><WaitlistCount/> </span>   people already on the waitlist</span>
                     </div>
                 </div>
             </div>
