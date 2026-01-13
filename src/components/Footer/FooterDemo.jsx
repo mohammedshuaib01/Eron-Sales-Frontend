@@ -64,11 +64,11 @@ function FooterDemo({ onOpenModal }) {
         </div>
 
         {/* Massive Brand Name */}
-        <h1 className="footer-brand-title">
+        <h2 className="footer-brand-title">
           <span>ERON</span>
           <span className="brand-space"> </span>
           <span>CRM</span>
-        </h1>
+        </h2>
       </div>
 
       {/* Bottom Bar: Copyright, Location, Time, Socials */}

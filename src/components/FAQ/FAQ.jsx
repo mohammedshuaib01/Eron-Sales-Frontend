@@ -30,20 +30,20 @@ const FAQ = () => {
 
     const faqData = [
         {
-            question: "Who is eligible to apply for funding?",
-            answer: "We support a wide range of businesses. Generally, if you have a consistent revenue stream and have been operating for at least 6 months, you are eligible to apply."
+            question: "What makes Eron CRM different from others?",
+            answer: "Unlike traditional CRMs that charge monthly subscriptions per user, Eron CRM offers a custom-built solution that you own. You get all the powerful features without the recurring costs that eat into your profit."
         },
         {
-            question: "How quickly can I access the funds?",
-            answer: "Once approved, funds are typically available within 24-48 hours. We prioritize speed to ensure you can capitalize on opportunities immediately."
+            question: "Can I migrate my data from Zoho or Salesforce?",
+            answer: "Yes! We specialize in seamless migrations. Our team will help you move your existing leads, contacts, and deals from platforms like Zoho or Salesforce into your new Eron CRM without any data loss."
         },
         {
-            question: "Do I need to provide collateral or give up equity?",
-            answer: "No. Our funding models are non-dilutive and unsecured. You keep full ownership of your business, and we don't require physical collateral."
+            question: "How customizable is the CRM for my business?",
+            answer: "Highly customizable. Since we build it specifically for you, every field, workflow, and dashboard is designed to match your unique sales process, rather than forcing you to adapt to a generic template."
         },
         {
-            question: "Will applying affect my credit score?",
-            answer: "Applying typically involves a soft credit pull which does not affect your credit score. We focus more on your business performance than personal credit history."
+            question: "Is there a limit to the number of users I can add?",
+            answer: "No. Since you own your CRM instance, you can add as many users as you need without increasing your costs. This makes Eron CRM the most scalable solution for growing teams."
         }
     ];
 
@@ -56,7 +56,7 @@ const FAQ = () => {
                     <h2 className="anim-item" style={{ transitionDelay: '0ms' }}>Frequently <br /> Asked Questions</h2>
                     <p className="anim-item" style={{ transitionDelay: '100ms' }}>
                         Clear answers to the most common questions <br />
-                        about our funding process, eligibility, and costs.
+                        about Eron CRM, migration, and custom features.
                     </p>
                 </div>
 

@@ -87,10 +87,10 @@ const Scrollsection = () => {
         <div className="sticky-column left-text">
           <div className="text-wrapper">
             <span className="section-label">FEATURES</span>
-            <h1>
+            <h2>
               Powerful <span className="highlight">Tools</span><br />
               For Your <span className="highlight-alt">Growth</span>
-            </h1>
+            </h2>
           </div>
         </div>
 
@@ -124,20 +124,20 @@ const Scrollsection = () => {
         </div>
       </div>
 
-       {/* ================= MOBILE VIEW (NEW) ================= */}
-    <div className="mobile-view">
-      <h1 className="mobile-main-title">
-        Powerful <span>Tools</span><br/> For Your <span>Growth</span>
-      </h1>
+      {/* ================= MOBILE VIEW (NEW) ================= */}
+      <div className="mobile-view">
+        <h2 className="mobile-main-title">
+          Powerful <span>Tools</span><br /> For Your <span>Growth</span>
+        </h2>
 
-      {steps.map((step, index) => (
-        <div className="mobile-feature" key={index}>
-          <img src={step.img} alt={step.title} className="mobile-image" />
-          <h2 className="mobile-title">{step.title}</h2>
-          <p className="mobile-description">{step.description}</p>
-        </div>
-      ))}
-    </div>
+        {steps.map((step, index) => (
+          <div className="mobile-feature" key={index}>
+            <img src={step.img} alt={step.title} className="mobile-image" />
+            <h2 className="mobile-title">{step.title}</h2>
+            <p className="mobile-description">{step.description}</p>
+          </div>
+        ))}
+      </div>
     </section>
   );
 };
